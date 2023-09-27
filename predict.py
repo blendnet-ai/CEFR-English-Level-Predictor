@@ -10,11 +10,11 @@ class Predictor(BasePredictor):
         self.model = Model("cefr_predictor/models/xgboost.joblib")
 
     def predict(self,
-                texts: List[str] = Input(description="List of texts to evaluate")
+                text: str = Input(description="List of texts to evaluate")
                 ) -> List:
         """Run a single prediction on the model"""
         # logging.info(f"Processing texts - {texts}")
-        preds, probas = self.model.predict_decode(texts)
+        preds, probas = self.model.predict_decode([text])
 
         results = []
         for text, pred, proba in zip(texts, preds, probas):
