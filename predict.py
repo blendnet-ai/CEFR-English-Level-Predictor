@@ -14,7 +14,8 @@ class Predictor(BasePredictor):
                 ) -> List:
         """Run a single prediction on the model"""
         # logging.info(f"Processing texts - {texts}")
-        preds, probas = self.model.predict_decode([text])
+        texts=[text]
+        preds, probas = self.model.predict_decode(texts)
 
         results = []
         for text, pred, proba in zip(texts, preds, probas):
