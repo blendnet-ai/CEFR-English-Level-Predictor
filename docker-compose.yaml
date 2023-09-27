@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+
+  cefr-predictor:
+    build: .
+    container_name: cefr-predictor
+    image: ghcr.io/blendnet-ai/cefr-english-level-predictor:latest
+    restart: unless-stopped
+    # entrypoint: python manage.py runserver 0.0.0.0:8001
+    # volumes:
+    #   - .:/appuser/code
+    # ports:
+    #   - "8001:8001"
+    # environment:
+    #   - DJANGO_DEBUG=TRUE
+    #   - DJANGO_LOG_LEVEL=DEBUG
+    #   - CACHE_ENABLED=TRUE
+    # env_file:
+    #   - .env
