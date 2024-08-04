@@ -4,16 +4,17 @@ services:
   cefr-predictor:
     build: .
     container_name: cefr-predictor
-    image: ghcr.io/blendnet-ai/cefr-english-level-predictor:latest
+    image: ghcr.io/blendnet-ai/cefr-score-evaluation:latest
+    platform: linux/amd64
     restart: unless-stopped
-    # entrypoint: python manage.py runserver 0.0.0.0:8001
+    entrypoint: python fastapi_server.py --port 8000
     # volumes:
     #   - .:/appuser/code
-    # ports:
-    #   - "8001:8001"
+    ports:
+       - "9999:8000"
     # environment:
     #   - DJANGO_DEBUG=TRUE
     #   - DJANGO_LOG_LEVEL=DEBUG
     #   - CACHE_ENABLED=TRUE
-    # env_file:
-    #   - .env
+    env_file:
+      - .env
